@@ -36,11 +36,21 @@ Por defecto, el gateway queda en `http://localhost:3000`.
 
 ## Rutas del gateway
 
-1. `GET /` devuelve información general del gateway.
-2. `GET /store` devuelve la respuesta combinada de los 3 microservicios.
-3. `GET /store/products` consulta el microservicio de productos.
-4. `GET /store/cart` consulta el microservicio de carrito.
-5. `GET /store/checkout` consulta el microservicio de checkout.
+Estas son las rutas que puedes probar en el gateway:
+
+| Método | Ruta | Descripción |
+| --- | --- | --- |
+| `GET` | `http://localhost:3000/` | Devuelve información general del gateway. |
+| `GET` | `http://localhost:3000/store` | Devuelve la respuesta combinada de los 3 microservicios. |
+| `GET` | `http://localhost:3000/store/products` | Consulta el microservicio de productos. |
+| `GET` | `http://localhost:3000/store/cart` | Consulta el microservicio de carrito. |
+| `GET` | `http://localhost:3000/store/checkout` | Consulta el microservicio de checkout. |
+
+Ejemplo rápido:
+
+```bash
+curl http://localhost:3000/store
+```
 
 ## Probar el proyecto
 
