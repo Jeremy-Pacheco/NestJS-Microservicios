@@ -8,7 +8,7 @@ async function bootstrap() {
     transport: Transport.TCP,
     options: {
       host: DEFAULT_MICROSERVICE_HOST,
-      port: MICROSERVICE_PORTS.orders,
+      port: MICROSERVICE_PORTS.cart,
     },
   });
 

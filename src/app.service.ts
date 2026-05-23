@@ -12,14 +12,14 @@ import {
 @Injectable()
 export class AppService implements OnModuleDestroy {
   private readonly clients: Record<MicroserviceName, ClientProxy> = {
-    users: this.createClient(MICROSERVICE_PORTS.users),
-    orders: this.createClient(MICROSERVICE_PORTS.orders),
-    payments: this.createClient(MICROSERVICE_PORTS.payments),
+    products: this.createClient(MICROSERVICE_PORTS.products),
+    cart: this.createClient(MICROSERVICE_PORTS.cart),
+    checkout: this.createClient(MICROSERVICE_PORTS.checkout),
   };
 
   getGatewayInfo() {
     return {
-      name: 'NestJS Gateway',
+      name: 'NestJS Store Gateway',
       transport: 'http',
       microservices: Object.entries(MICROSERVICE_PORTS).map(([name, port]) => ({
         name,
@@ -30,15 +30,15 @@ export class AppService implements OnModuleDestroy {
   }
 
   getUsers() {
-    return this.requestService('users', MICROSERVICE_PATTERNS.users);
+    return this.requestService('products', MICROSERVICE_PATTERNS.products);
   }
 
   getOrders() {
-    return this.requestService('orders', MICROSERVICE_PATTERNS.orders);
+    return this.requestService('cart', MICROSERVICE_PATTERNS.cart);
   }
 
   getPayments() {
-    return this.requestService('payments', MICROSERVICE_PATTERNS.payments);
+    return this.requestService('checkout', MICROSERVICE_PATTERNS.checkout);
   }
 
   async getAllServices() {
@@ -49,11 +49,11 @@ export class AppService implements OnModuleDestroy {
     ]);
 
     return {
-      gateway: 'NestJS Gateway',
+      gateway: 'NestJS Store Gateway',
       services: {
-        users,
-        orders,
-        payments,
+        products: users,
+        cart: orders,
+        checkout: payments,
       },
     };
   }

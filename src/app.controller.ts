@@ -10,22 +10,22 @@ export class AppController {
     return this.appService.getGatewayInfo();
   }
 
-  @Get('microservices')
+  @Get('store')
   getMicroservices() {
     return this.appService.getAllServices();
   }
 
-  @Get('microservices/users')
+  @Get('store/products')
   getUsers() {
     return this.appService.getUsers();
   }
 
-  @Get('microservices/orders')
+  @Get('store/cart')
   getOrders() {
     return this.appService.getOrders();
   }
 
-  @Get('microservices/payments')
+  @Get('store/checkout')
   getPayments() {
     return this.appService.getPayments();
   }

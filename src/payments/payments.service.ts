@@ -5,9 +5,9 @@ import type { ServiceRequest, ServiceResponse } from '../microservices/microserv
 export class PaymentsService {
   buildResponse(payload: ServiceRequest): ServiceResponse {
     return {
-      service: 'payments',
+      service: 'checkout',
       status: 'ok',
-      message: 'Payments microservice is running',
+      message: 'Checkout microservice is running',
       requestedBy: payload.requestedBy,
       receivedAt: new Date().toISOString(),
     };

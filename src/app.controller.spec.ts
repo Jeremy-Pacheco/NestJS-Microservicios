@@ -5,7 +5,7 @@ import { AppService } from './app.service';
 describe('AppController', () => {
   let appController: AppController;
   const appService = {
-    getGatewayInfo: jest.fn().mockReturnValue({ name: 'NestJS Gateway' }),
+    getGatewayInfo: jest.fn().mockReturnValue({ name: 'NestJS Store Gateway' }),
     getAllServices: jest.fn(),
     getUsers: jest.fn(),
     getOrders: jest.fn(),
@@ -28,7 +28,7 @@ describe('AppController', () => {
 
   describe('root', () => {
     it('should return gateway info', () => {
-      expect(appController.getGatewayInfo()).toEqual({ name: 'NestJS Gateway' });
+      expect(appController.getGatewayInfo()).toEqual({ name: 'NestJS Store Gateway' });
     });
   });
 });

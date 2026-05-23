@@ -11,7 +11,7 @@ import { OrdersService } from './orders.service';
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
-  @MessagePattern(MICROSERVICE_PATTERNS.orders)
+  @MessagePattern(MICROSERVICE_PATTERNS.cart)
   health(@Payload() payload: ServiceRequest): ServiceResponse {
     return this.ordersService.buildResponse(payload);
   }

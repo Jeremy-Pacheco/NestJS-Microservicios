@@ -22,7 +22,7 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect(({ body }) => {
         expect(body).toMatchObject({
-          name: 'NestJS Gateway',
+          name: 'NestJS Store Gateway',
           transport: 'http',
         });
       });

@@ -11,7 +11,7 @@ import { PaymentsService } from './payments.service';
 export class PaymentsController {
   constructor(private readonly paymentsService: PaymentsService) {}
 
-  @MessagePattern(MICROSERVICE_PATTERNS.payments)
+  @MessagePattern(MICROSERVICE_PATTERNS.checkout)
   health(@Payload() payload: ServiceRequest): ServiceResponse {
     return this.paymentsService.buildResponse(payload);
   }

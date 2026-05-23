@@ -11,7 +11,7 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @MessagePattern(MICROSERVICE_PATTERNS.users)
+  @MessagePattern(MICROSERVICE_PATTERNS.products)
   health(@Payload() payload: ServiceRequest): ServiceResponse {
     return this.usersService.buildResponse(payload);
   }
