@@ -4,19 +4,31 @@ import { AppService } from './app.service';
 
 describe('AppController', () => {
   let appController: AppController;
+  const appService = {
+    getGatewayInfo: jest.fn().mockReturnValue({ name: 'NestJS Gateway' }),
+    getAllServices: jest.fn(),
+    getUsers: jest.fn(),
+    getOrders: jest.fn(),
+    getPayments: jest.fn(),
+  };
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
-      providers: [AppService],
+      providers: [
+        {
+          provide: AppService,
+          useValue: appService,
+        },
+      ],
     }).compile();
 
     appController = app.get<AppController>(AppController);
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return gateway info', () => {
+      expect(appController.getGatewayInfo()).toEqual({ name: 'NestJS Gateway' });
     });
   });
 });
