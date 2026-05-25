@@ -7,12 +7,37 @@ export const MICROSERVICE_PORTS = {
 } as const;
 
 export const MICROSERVICE_PATTERNS = {
-  products: 'products.health',
-  cart: 'cart.health',
-  checkout: 'checkout.health',
+  products: {
+    list: 'products.list',
+    create: 'products.create',
+    update: 'products.update',
+    delete: 'products.delete',
+  },
+  cart: {
+    list: 'cart.list',
+    create: 'cart.create',
+    update: 'cart.update',
+    delete: 'cart.delete',
+  },
+  checkout: {
+    list: 'checkout.list',
+    create: 'checkout.create',
+    update: 'checkout.update',
+    delete: 'checkout.delete',
+  },
 } as const;
 
 export type MicroserviceName = keyof typeof MICROSERVICE_PORTS;
+
+export interface StoreItem {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  quantity: number;
+}
+
+export type StoreItemInput = Omit<StoreItem, 'id'>;
 
 export interface ServiceResponse {
   service: MicroserviceName;
@@ -24,4 +49,22 @@ export interface ServiceResponse {
 
 export interface ServiceRequest {
   requestedBy: string;
+}
+
+export interface CreateItemRequest extends ServiceRequest {
+  item: StoreItemInput;
+}
+
+export interface UpdateItemRequest extends ServiceRequest {
+  id: number;
+  item: Partial<StoreItemInput>;
+}
+
+export interface DeleteItemRequest extends ServiceRequest {
+  id: number;
+}
+
+export interface CrudResponse<T> extends ServiceResponse {
+  data?: T;
+  items?: StoreItem[];
 }
